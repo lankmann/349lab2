@@ -1,3 +1,7 @@
+# CSC 349-01, Fall 2023
+# Leo Rivera
+# Sven Toernqvist
+
 import unittest
 import numpy as np
 from matrix import LinearMxMultiply, DncMxMultiply, StrassenMxMultiply, PadMatrices

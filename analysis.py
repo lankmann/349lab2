@@ -1,3 +1,7 @@
+# CSC 349-01, Fall 2023
+# Leo Rivera
+# Sven Toernqvist
+
 import numpy as np
 import timeit
 from matplotlib import pyplot as plt
