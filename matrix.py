@@ -5,8 +5,8 @@ def FindNearestPowerOfTwo(n):
    return 1 << (n-1).bit_length()
 
 def PadMatrices(a, b) -> tuple[int, int]:
-  a_shape = np.shape(a)
-  b_shape = np.shape(b)
+  a_shape = a.shape
+  b_shape = b.shape
   max_a, min_a = max(a_shape), min(a_shape)
   max_b, min_b = max(b_shape), min(b_shape)
   n = FindNearestPowerOfTwo(max(max_a, max_b))
@@ -23,11 +23,9 @@ def PadMatrices(a, b) -> tuple[int, int]:
   return (new_a, new_b)
 
 def MatrixSum(a, b):
-    try:
-      len(a)
-    except:
-      return a + b
-    n = np.shape(a)[0]
+    if type(a) != np.ndarray:
+       return a + b
+    n = a.shape[0]
     result = np.empty((n, n))
     for i in range(n):
         for j in range(n):
@@ -35,11 +33,9 @@ def MatrixSum(a, b):
     return result
 
 def MatrixDiff(a, b):
-    try:
-      len(a)
-    except:
-      return a + b
-    n = np.shape(a)[0]
+    if type(a) != np.ndarray:
+       return a - b
+    n = a.shape[0]
     result = np.empty((n, n))
     for i in range(n):
         for j in range(n):
@@ -84,7 +80,7 @@ def DncMxMultiply(a, b):
   return padded_result[:num_rows_a, :num_cols_b]
 
 def MatMulDNC(a, b):
-  n = np.shape(a)[0]
+  n = a.shape[0]
 
   if n == 1:
     return a[0][0] * b[0][0]
@@ -122,7 +118,7 @@ def StrassenMxMultiply(a, b):
   return padded_result[:num_rows_a, :num_cols_b]
 
 def MatMulStrassen(a, b):
-    n = np.shape(a)[0]
+    n = a.shape[0]
 
     if n == 1:
         return np.array([[a[0, 0] * b[0, 0]]])
@@ -157,4 +153,3 @@ def MatMulStrassen(a, b):
     result[half:, half:] = c22
 
     return result
-
