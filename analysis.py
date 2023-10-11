@@ -7,17 +7,19 @@ problem_set = []
 matrix_sizes = list(map(lambda x: 2**x, range(1, 10)))
 
 
-def multiplyMatrices(key, n):
+def multiplyMatrices(algorithm, n):
+  '''Multiply two zero matrices of `n` size using the specified `algorithm`'''
   a = np.zeros((n, n))
   b = np.zeros((n, n))
   f = {
     'dnc': DncMxMultiply,
     'linear': LinearMxMultiply,
     'strassen': StrassenMxMultiply
-  }[key]
+  }[algorithm]
   f(a, b)
 
 def graphTimeComplexity():
+  '''Creates a graph showing the time complexites of the three algorithms'''
   repeat = 1
   dnc_times = []
   strassen_times = []

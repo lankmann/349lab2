@@ -4,6 +4,7 @@ from matrix import LinearMxMultiply, DncMxMultiply, StrassenMxMultiply, PadMatri
 
 class MaxTest(unittest.TestCase):
   def setUp(self):
+    '''Create 32 random matrices'''
     self.testValues = []
     for i in range(32):
       rows = np.random.randint(1, 64)
@@ -31,6 +32,7 @@ class MaxTest(unittest.TestCase):
 
 
   def matrixMultiplication(self, f):
+    '''Takes a matrix product function `f` and tests in on 32 random test matrices'''
     for a, b in self.testValues:
       expected = np.matmul(a, b)
       actual = f(a, b)
